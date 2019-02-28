@@ -1,0 +1,11 @@
+<h2 class="sub_headline">{{ 'eimed.system_info.php_info'|trans }}</h2>
+
+<div class="tl_tbox">
+    <strong>{{ 'eimed.system_info.php_version'|trans }}:</strong> {{ phpInfo.getVersion }}
+</div>
+<div class="tl_tbox">
+    <strong>{{ 'eimed.system_info.php_extensions'|trans }}:</strong>
+    {% for extension in phpInfo.getExtensions %}
+        <span>{{ extension }}</span>{% if loop.index < loop.length %}, {% endif %}
+    {% endfor %}
+</div>

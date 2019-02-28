@@ -1,0 +1,70 @@
+{% extends "@ContaoCore/Backend/be_page.html.twig" %}
+
+{% block headline %}
+    {{ 'eimed.system_info.title' | trans }}
+{% endblock %}
+
+{% block main %}
+    <div class="maintenance_inactive">
+        {{ messages | raw }}
+
+        <fieldset class="tl_box" id="pal_system_load">
+            <legend onclick="AjaxRequest.toggleFieldset(this, 'system_load')">
+                {{ 'eimed.system_info.legend_load'|trans }}
+            </legend>
+
+            {% include '@EikonaMediaContaoSystemInformation/system_load.html.twig' with {
+                'systemLoadInfo': systemLoadInfo
+            } %}
+        </fieldset>
+
+        <fieldset class="tl_box" id="pal_software">
+            <legend onclick="AjaxRequest.toggleFieldset(this, 'software')">
+                {{ 'eimed.system_info.legend_software'|trans }}
+            </legend>
+
+            <div class="w50">
+                {% include '@EikonaMediaContaoSystemInformation/os_info.html.twig' with {
+                    'osInfo': osInfo
+                } %}
+            </div>
+            <div class="w50">
+                {% include '@EikonaMediaContaoSystemInformation/virtualization_info.html.twig' with {
+                    'virtualizationInfo': virtualizationInfo
+                } %}
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="w50">
+                {% include '@EikonaMediaContaoSystemInformation/php_info.html.twig' with {
+                    'phpInfo': phpInfo
+                } %}
+            </div>
+            <div class="w50">
+                {% include '@EikonaMediaContaoSystemInformation/database_info.html.twig' with {
+                    'databaseInfo': databaseInfo
+                } %}
+            </div>
+        </fieldset>
+
+        <fieldset class="tl_box" id="pal_hardware">
+            <legend onclick="AjaxRequest.toggleFieldset(this, 'hardware')">
+                {{ 'eimed.system_info.legend_hardware'|trans }}
+            </legend>
+
+            <div class="w50">
+                {% include '@EikonaMediaContaoSystemInformation/hardware_info.html.twig' with {
+                    'hardwareInfo': hardwareInfo
+                } %}
+            </div>
+            <div class="w50">
+                {% include '@EikonaMediaContaoSystemInformation/host_info.html.twig' with {
+                    'hostInfo': hostInfo
+                } %}
+            </div>
+        </fieldset>
+    </div>
+{% endblock %}
+
+{% block error %}{% endblock %}

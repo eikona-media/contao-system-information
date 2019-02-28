@@ -1,0 +1,14 @@
+<h2 class="sub_headline">{{ 'eimed.system_info.database_info'|trans }}</h2>
+
+<div class="tl_tbox">
+    <strong>{{ 'eimed.system_info.database_type'|trans }}:</strong> {{ databaseInfo.getType }}
+</div>
+<div class="tl_tbox">
+    <strong>{{ 'eimed.system_info.database_version'|trans }}:</strong> {{ databaseInfo.getVersion }}
+</div>
+<div class="tl_tbox">
+    <strong>{{ 'eimed.system_info.database_sql_modes'|trans }}:</strong>
+    {% for mode in databaseInfo.getSqlModes %}
+        <span>{{ mode }}</span>{% if loop.index < loop.length %}, {% endif %}
+    {% endfor %}
+</div>

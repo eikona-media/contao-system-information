@@ -1,0 +1,31 @@
+/*
+ * This file is part of System Information Bundle for Contao Open Source CMS.
+ *
+ * (c) eikona-media.de
+ *
+ * @license MIT
+ */
+
+#system_info_load_graph{
+    display: block;
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #eaeaec;
+    margin-top: 20px;
+}
+#system_info_load_graph_inner{
+    position: absolute;
+    display: flex;
+    right: 0;
+    bottom: 0;
+}
+
+.load_bar{
+    width: 2px;
+    background-color: #f47c00;
+    bottom: 0;
+    float: left;
+    height: 100%;
+}

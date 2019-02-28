@@ -1,0 +1,13 @@
+contao_system_information:
+    path: /contao/system_information
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: 'EikonaMediaContaoSystemInformationBundle:Backend:index'
+
+contao_system_information.system_load:
+    path: /contao/system_information/system_load
+    defaults:
+        _scope: backend
+        _token_check: true
+        _controller: 'EikonaMediaContaoSystemInformationBundle:Backend:getSystemLoad'
