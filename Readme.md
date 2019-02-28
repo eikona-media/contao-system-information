@@ -5,6 +5,7 @@ like information about PHP, database, operating system, host, hardware, virtuali
 
 ## !!! Attention !!!
 This needs access to /proc and /sys to work properly.
+For granting your app access to these directories you can add them to the 'open_basedir' option of your php.ini.
 
 ## Installation
 
@@ -38,7 +39,8 @@ Dieses Bundle zeigt verschiedene Fakten über die Umgebung an, in der die aktuel
 wie Informationen über PHP, Datenbank, Betriebssystem, Host, Hardware, Virtualisierung und Systemlast (inklusive einer Live-Grafik der aktuellen Systemlast).
 
 ## !!! Achtung !!!
-Der Zugriff auf /proc und /sys muss gewährleistet sein damit dieses Bundle funktioniert.
+Der Zugriff auf /proc und /sys muss gewährleistet sein damit dieses Bundle vollständig funktioniert.
+Um der App Zugriff auf diese Verzeichnisse zu gewähren, kann die 'open_basedir' Direktive in der php.ini erweitert werden.
 
 ## Installation
 
