@@ -51,10 +51,13 @@ class HostInfo
             $this->setAccessedIP($accessedIP);
             $this->setUptime($uptime['text'] ?? '');
         } catch(FatalException $e){
+            $host= gethostname();
+            $ip = gethostbyname($host);
+
             // collect host information
-            $this->setHostname(gethostname());
-            $this->setAccessedIP('');
-            $this->setUptime('');
+            $this->setHostname($host);
+            $this->setAccessedIP($ip);
+            $this->setUptime('-');
         }
     }
 

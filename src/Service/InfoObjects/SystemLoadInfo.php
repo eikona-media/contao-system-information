@@ -44,7 +44,7 @@ class SystemLoadInfo
      */
     public function __construct()
     {
-        try{
+        try {
             $linfo = new Linfo();
             $parser = $linfo->getParser();
             $cpu = $parser->getCPU();
@@ -54,11 +54,13 @@ class SystemLoadInfo
             $this->setLast5Minutes($load['5min'] ?? 0);
             $this->setLast15Minutes($load['15min'] ?? 0);
             $this->setFactor(count($cpu));
-        } catch(FatalException $e){
-            $this->setLast1Minute(0);
-            $this->setLast5Minutes(0);
-            $this->setLast15Minutes(0);
-            $this->setFactor(1);
+        } catch (FatalException $e) {
+            $loadAvg = sys_getloadavg();
+
+            $this->setLast1Minute($loadAvg[0]);
+            $this->setLast5Minutes($loadAvg[1]);
+            $this->setLast15Minutes($loadAvg[2]);
+            $this->setFactor(4);
         }
     }
 

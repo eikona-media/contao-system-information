@@ -56,10 +56,10 @@ class OSInfo
             $this->setDistroVersion($distro['version'] ?? '');
             $this->setKernel($kernel);
         } catch(FatalException $e){
-            $this->setOs('');
-            $this->setDistroName('');
-            $this->setDistroVersion('');
-            $this->setKernel('');
+            $this->setOs(PHP_OS_FAMILY);
+            $this->setDistroName(PHP_OS);
+            $this->setDistroVersion(php_uname('v'));
+            $this->setKernel(php_uname('r'));
         }
     }
 

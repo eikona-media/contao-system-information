@@ -64,8 +64,8 @@ class HardwareInfo
             $this->setSwapTotal($ram['swapTotal']  ?? 0);
         } catch (FatalException $e){
             $this->setCpus([]);
-            $this->setArchitecture('');
-            $this->setServerModel('');
+            $this->setArchitecture(php_uname('m'));
+            $this->setServerModel('-');
             $this->setRamTotal(0);
             $this->setSwapTotal(0);
         }
