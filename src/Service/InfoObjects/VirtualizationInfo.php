@@ -10,6 +10,7 @@
 
 namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
+use Linfo\Exceptions\FatalException;
 use Linfo\Linfo;
 
 /**
@@ -33,12 +34,17 @@ class VirtualizationInfo
      */
     public function __construct()
     {
-        $linfo = new Linfo();
-        $parser = $linfo->getParser();
-        $virtualization = $parser->getVirtualization();
+        try{
+            $linfo = new Linfo();
+            $parser = $linfo->getParser();
+            $virtualization = $parser->getVirtualization();
 
-        $this->setType($virtualization['type'] ?? '');
-        $this->setMethod($virtualization['method'] ?? '');
+            $this->setType($virtualization['type'] ?? '');
+            $this->setMethod($virtualization['method'] ?? '');
+        } catch (FatalException $e){
+            $this->setType('');
+            $this->setMethod('');
+        }
     }
 
     /**

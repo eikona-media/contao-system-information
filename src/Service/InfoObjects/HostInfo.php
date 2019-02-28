@@ -10,6 +10,7 @@
 
 namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
+use Linfo\Exceptions\FatalException;
 use Linfo\Linfo;
 
 /**
@@ -38,16 +39,23 @@ class HostInfo
      */
     public function __construct()
     {
-        $linfo = new Linfo();
-        $parser = $linfo->getParser();
-        $hostname = $parser->getHostName();
-        $accessedIP = $parser->getAccessedIP();
-        $uptime = $parser->getUpTime();
+        try{
+            $linfo = new Linfo();
+            $parser = $linfo->getParser();
+            $hostname = $parser->getHostName();
+            $accessedIP = $parser->getAccessedIP();
+            $uptime = $parser->getUpTime();
 
-        // collect host information
-        $this->setHostname($hostname);
-        $this->setAccessedIP($accessedIP);
-        $this->setUptime($uptime['text'] ?? '');
+            // collect host information
+            $this->setHostname($hostname);
+            $this->setAccessedIP($accessedIP);
+            $this->setUptime($uptime['text'] ?? '');
+        } catch(FatalException $e){
+            // collect host information
+            $this->setHostname(gethostname());
+            $this->setAccessedIP('');
+            $this->setUptime('');
+        }
     }
 
     /**

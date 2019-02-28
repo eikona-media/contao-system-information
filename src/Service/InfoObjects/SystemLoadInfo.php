@@ -10,6 +10,7 @@
 
 namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
+use Linfo\Exceptions\FatalException;
 use Linfo\Linfo;
 
 /**
@@ -43,15 +44,22 @@ class SystemLoadInfo
      */
     public function __construct()
     {
-        $linfo = new Linfo();
-        $parser = $linfo->getParser();
-        $cpu = $parser->getCPU();
-        $load = $parser->getLoad();
+        try{
+            $linfo = new Linfo();
+            $parser = $linfo->getParser();
+            $cpu = $parser->getCPU();
+            $load = $parser->getLoad();
 
-        $this->setLast1Minute($load['now'] ?? 0);
-        $this->setLast5Minutes($load['5min'] ?? 0);
-        $this->setLast15Minutes($load['15min'] ?? 0);
-        $this->setFactor(count($cpu));
+            $this->setLast1Minute($load['now'] ?? 0);
+            $this->setLast5Minutes($load['5min'] ?? 0);
+            $this->setLast15Minutes($load['15min'] ?? 0);
+            $this->setFactor(count($cpu));
+        } catch(FatalException $e){
+            $this->setLast1Minute(0);
+            $this->setLast5Minutes(0);
+            $this->setLast15Minutes(0);
+            $this->setFactor(1);
+        }
     }
 
     /**

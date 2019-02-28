@@ -10,6 +10,7 @@
 
 namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
+use Linfo\Exceptions\FatalException;
 use Linfo\Linfo;
 
 /**
@@ -48,18 +49,26 @@ class HardwareInfo
      */
     public function __construct()
     {
-        $linfo = new Linfo();
-        $parser = $linfo->getParser();
-        $cpus = $parser->getCPU();
-        $ram = $parser->getRAM();
-        $model = $parser->getModel();
-        $architecture = $parser->getCPUArchitecture();
+        try{
+            $linfo = new Linfo();
+            $parser = $linfo->getParser();
+            $cpus = $parser->getCPU();
+            $ram = $parser->getRAM();
+            $model = $parser->getModel();
+            $architecture = $parser->getCPUArchitecture();
 
-        $this->setCpus($cpus);
-        $this->setArchitecture($architecture);
-        $this->setServerModel($model);
-        $this->setRamTotal($ram['total'] ?? 0);
-        $this->setSwapTotal($ram['swapTotal']  ?? 0);
+            $this->setCpus($cpus);
+            $this->setArchitecture($architecture);
+            $this->setServerModel($model);
+            $this->setRamTotal($ram['total'] ?? 0);
+            $this->setSwapTotal($ram['swapTotal']  ?? 0);
+        } catch (FatalException $e){
+            $this->setCpus([]);
+            $this->setArchitecture('');
+            $this->setServerModel('');
+            $this->setRamTotal(0);
+            $this->setSwapTotal(0);
+        }
     }
 
     /**

@@ -3,6 +3,8 @@
 This bundle allows you to view different basic facts about the environment your Contao instance is running in,
 like information about PHP, database, operating system, host, hardware, virtualization and system load (including a live system load graph).
 
+##!!! Attention !!!
+This needs access to /proc and /sys to work properly.
 
 ## Installation
 
@@ -35,6 +37,8 @@ Now, there is a new menu entry in the System section called 'System Information'
 Dieses Bundle zeigt verschiedene Fakten über die Umgebung an, in der die aktuelle Contao Instanz läuft,
 wie Informationen über PHP, Datenbank, Betriebssystem, Host, Hardware, Virtualisierung und Systemlast (inklusive einer Live-Grafik der aktuellen Systemlast).
 
+##!!! Achtung !!!
+Der Zugriff auf /proc und /sys muss gewährleistet sein damit dieses Bundle funktioniert.
 
 ## Installation
 

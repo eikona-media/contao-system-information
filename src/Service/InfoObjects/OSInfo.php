@@ -10,6 +10,7 @@
 
 namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
+use Linfo\Exceptions\FatalException;
 use Linfo\Linfo;
 
 /**
@@ -43,16 +44,23 @@ class OSInfo
      */
     public function __construct()
     {
-        $linfo = new Linfo();
-        $parser = $linfo->getParser();
-        $os = $parser->getOS();
-        $distro = $parser->getDistro();
-        $kernel = $parser->getKernel();
+        try{
+            $linfo = new Linfo();
+            $parser = $linfo->getParser();
+            $os = $parser->getOS();
+            $distro = $parser->getDistro();
+            $kernel = $parser->getKernel();
 
-        $this->setOs($os);
-        $this->setDistroName($distro['name'] ?? '');
-        $this->setDistroVersion($distro['version'] ?? '');
-        $this->setKernel($kernel);
+            $this->setOs($os);
+            $this->setDistroName($distro['name'] ?? '');
+            $this->setDistroVersion($distro['version'] ?? '');
+            $this->setKernel($kernel);
+        } catch(FatalException $e){
+            $this->setOs('');
+            $this->setDistroName('');
+            $this->setDistroVersion('');
+            $this->setKernel('');
+        }
     }
 
     /**
