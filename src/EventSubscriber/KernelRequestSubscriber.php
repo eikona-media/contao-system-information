@@ -35,7 +35,7 @@ class KernelRequestSubscriber implements EventSubscriberInterface
     {
         $request = $e->getRequest();
 
-        if ($this->scopeMatcher->isBackendRequest($request)) {
+        if ($this->scopeMatcher->isBackendRequest($request) && 'contao_system_information' === $request->attributes->get('_route')) {
             $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/eikonamediacontaosysteminformation/js/systemInfo.js|static';
             $GLOBALS['TL_CSS'][] = 'bundles/eikonamediacontaosysteminformation/css/systemInfo.css|static';
         }
