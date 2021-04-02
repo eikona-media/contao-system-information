@@ -2,3 +2,7 @@
 .idea
 .php_cs.cache
 .project.conf
+
+# Composer
+/vendor/
+composer.lock
