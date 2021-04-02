@@ -1,9 +1,0 @@
-services:
-    eikona_media.contao.system_information.listener.navigation:
-        class: EikonaMedia\Contao\SystemInformation\EventListener\NavigationListener
-        arguments:
-            - '@request_stack'
-            - '@router'
-            - '@translator'
-            - '@contao.framework'
-        public: true

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="translations/messages.en.xlf" target-language="de">
+        <body>
+            <trans-unit id="eimed.system_info.title" resname="eimed.system_info.title">
+                <source>System Information</source>
+                <target>System Informationen</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.legend_load" resname="eimed.system_info.legend_load">
+                <source>Load</source>
+                <target>Last</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.legend_software" resname="eimed.system_info.legend_software">
+                <source>Software</source>
+                <target>Software</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.legend_hardware" resname="eimed.system_info.legend_hardware">
+                <source>Hardware</source>
+                <target>Hardware</target>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.system_load_info" resname="eimed.system_info.system_load_info">
+                <source>Systemload</source>
+                <target>Systemlast</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.system_load_1_minute" resname="eimed.system_info.system_load_1_minute">
+                <source>Last Minute</source>
+                <target>Letzte Minute</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.system_load_5_minutes" resname="eimed.system_info.system_load_5_minutes">
+                <source>Last 5 Minutes</source>
+                <target>Letzte 5 Minuten</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.system_load_15_minutes"
+                        resname="eimed.system_info.system_load_15_minutes">
+                <source>Last 15 Minutes</source>
+                <target>Letzte 15 Minuten</target>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.php_info" resname="eimed.system_info.php_info">
+                <source>PHP</source>
+                <target>PHP</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.php_version" resname="eimed.system_info.php_version">
+                <source>Version</source>
+                <target>Version</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.php_extensions" resname="eimed.system_info.php_extensions">
+                <source>Loaded Extensions</source>
+                <target>Geladene Erweiterungen</target>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.database_info" resname="eimed.system_info.database_info">
+                <source>Database</source>
+                <target>Datenbank</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.database_type" resname="eimed.system_info.database_type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.database_version" resname="eimed.system_info.database_version">
+                <source>Version</source>
+                <target>Version</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.database_sql_modes" resname="eimed.system_info.database_sql_modes">
+                <source>Active SQL Modes</source>
+                <target>Aktive SQL-Modes</target>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.os_info" resname="eimed.system_info.os_info">
+                <source>Operating System</source>
+                <target>Betriebssystem</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.os" resname="eimed.system_info.os">
+                <source>OS</source>
+                <target>Betriebssystem</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.os_distro" resname="eimed.system_info.os_distro">
+                <source>Distribution</source>
+                <target>Distribution</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.os_kernel" resname="eimed.system_info.os_kernel">
+                <source>Kernel</source>
+                <target>Kernel</target>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.host_info" resname="eimed.system_info.host_info">
+                <source>Host</source>
+                <target>Host</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.host_name" resname="eimed.system_info.host_name">
+                <source>Hostname</source>
+                <target>Hostname</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.host_accessed_ip" resname="eimed.system_info.host_accessed_ip">
+                <source>IP Address</source>
+                <target>IP-Adresse</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.host_uptime" resname="eimed.system_info.host_uptime">
+                <source>Uptime</source>
+                <target>Betriebszeit</target>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.hardware_info" resname="eimed.system_info.hardware_info">
+                <source>Hardware</source>
+                <target>Hardware</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_server_model" resname="eimed.system_info.hardware_server_model">
+                <source>Servermodel</source>
+                <target>Servermodell</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_cpu_type" resname="eimed.system_info.hardware_cpu_type">
+                <source>CPU Type</source>
+                <target>CPU-Typ</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_cpus" resname="eimed.system_info.hardware_cpus">
+                <source>CPUs</source>
+                <target>CPUs</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_architecture" resname="eimed.system_info.hardware_architecture">
+                <source>Architecture</source>
+                <target>Architektur</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_ram_total" resname="eimed.system_info.hardware_ram_total">
+                <source>RAM Total</source>
+                <target>RAM Gesamt</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_swap_total" resname="eimed.system_info.hardware_swap_total">
+                <source>SWAP Total</source>
+                <target>SWAP Gesamt</target>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.virtualization_info" resname="eimed.system_info.virtualization_info">
+                <source>Virtualization</source>
+                <target>Virtualisierung</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.virtualization_method" resname="eimed.system_info.virtualization_method">
+                <source>Method</source>
+                <target>Methode</target>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.virtualization_type" resname="eimed.system_info.virtualization_type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

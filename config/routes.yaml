@@ -1,0 +1,3 @@
+eikona_media.contao_system_information.controller:
+    resource: ../src/Controller
+    type: annotation

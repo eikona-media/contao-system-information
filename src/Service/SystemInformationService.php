@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of System Information Bundle for Contao Open Source CMS.
  *
@@ -19,64 +21,82 @@ use EikonaMedia\Contao\SystemInformation\Service\InfoObjects\SystemLoadInfo;
 use EikonaMedia\Contao\SystemInformation\Service\InfoObjects\VirtualizationInfo;
 
 /**
- * Class SystemInformationService
- * @package EikonaMedia\Contao\SystemInformation\Service
+ * Class SystemInformationService.
  */
 class SystemInformationService
 {
     /**
-     * @return SystemLoadInfo
+     * @var SystemLoadInfo
      */
-    public static function getSystemLoadInfo(): SystemLoadInfo
+    private $systemLoadInfo;
+    /**
+     * @var HostInfo
+     */
+    private $hostInfo;
+    /**
+     * @var DatabaseInfo
+     */
+    private $databaseInfo;
+    /**
+     * @var PHPInfo
+     */
+    private $PHPInfo;
+    /**
+     * @var OSInfo
+     */
+    private $OSInfo;
+    /**
+     * @var HardwareInfo
+     */
+    private $hardwareInfo;
+    /**
+     * @var VirtualizationInfo
+     */
+    private $virtualizationInfo;
+
+    public function __construct(SystemLoadInfo $systemLoadInfo, HostInfo $hostInfo, DatabaseInfo $databaseInfo, PHPInfo $PHPInfo, OSInfo $OSInfo, HardwareInfo $hardwareInfo, VirtualizationInfo $virtualizationInfo)
     {
-        return new SystemLoadInfo();
+        $this->systemLoadInfo = $systemLoadInfo;
+        $this->hostInfo = $hostInfo;
+        $this->databaseInfo = $databaseInfo;
+        $this->PHPInfo = $PHPInfo;
+        $this->OSInfo = $OSInfo;
+        $this->hardwareInfo = $hardwareInfo;
+        $this->virtualizationInfo = $virtualizationInfo;
     }
 
-    /**
-     * @return HostInfo
-     */
-    public static function getHostInfo(): HostInfo
+    public function getSystemLoadInfo(): SystemLoadInfo
     {
-        return new HostInfo();
+        return $this->systemLoadInfo->init();
     }
 
-    /**
-     * @return DatabaseInfo
-     */
-    public static function getDatabaseInfo(): DatabaseInfo
+    public function getHostInfo(): HostInfo
     {
-        return new DatabaseInfo();
+        return $this->hostInfo->init();
     }
 
-    /**
-     * @return PHPInfo
-     */
-    public static function getPHPInfo(): PHPInfo
+    public function getDatabaseInfo(): DatabaseInfo
     {
-        return new PHPInfo();
+        return $this->databaseInfo->init();
     }
 
-    /**
-     * @return OSInfo
-     */
-    public static function getOSInfo(): OSInfo
+    public function getPHPInfo(): PHPInfo
     {
-        return new OSInfo();
+        return $this->PHPInfo->init();
     }
 
-    /**
-     * @return HardwareInfo
-     */
-    public static function getHardwareInfo(): HardwareInfo
+    public function getOSInfo(): OSInfo
     {
-        return new HardwareInfo();
+        return $this->OSInfo->init();
     }
 
-    /**
-     * @return VirtualizationInfo
-     */
-    public static function getVirtualizationInfo(): VirtualizationInfo
+    public function getHardwareInfo(): HardwareInfo
     {
-        return new VirtualizationInfo();
+        return $this->hardwareInfo->init();
+    }
+
+    public function getVirtualizationInfo(): VirtualizationInfo
+    {
+        return $this->virtualizationInfo->init();
     }
 }

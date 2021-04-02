@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of System Information Bundle for Contao Open Source CMS.
  *
@@ -10,113 +12,117 @@
 
 namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
-use Contao\Database;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Driver\Exception;
 
 /**
- * Class DatabaseInfo
- * @package EikonaMedia\Contao\SystemInformation\Service\InfoObjects
+ * Class DatabaseInfo.
  */
 class DatabaseInfo
 {
     /**
-     * @var string $version
+     * @var Connection
+     */
+    private $connection;
+
+    /**
+     * @var string
      */
     private $version;
 
     /**
-     * @var string $type
+     * @var string
      */
     private $type;
 
     /**
-     * @var array $sqlModes
+     * @var array
      */
     private $sqlModes;
 
-    /**
-     * DatabaseInfo constructor.
-     */
-    public function __construct()
+    public function __construct(Connection $connection)
     {
-        $db = Database::getInstance();
+        $this->connection = $connection;
+    }
 
+    public function init(): self
+    {
         // get version and type
-        $resultVersion = $db->query('SHOW GLOBAL VARIABLES LIKE "%version%"');
+        try {
+            $resultVersion = $this->connection->executeQuery('SHOW GLOBAL VARIABLES LIKE "%version%"');
+        } catch (\Doctrine\DBAL\Exception $e) {
+        }
         $version = '';
         $type = '';
-        if ($resultVersion->count() > 0) {
-            while ($row = $resultVersion->fetchRow()) {
-                switch ($row[0]) {
-                    case 'version':
-                        $version = $row[1];
-                        break;
-                    case 'version_comment':
-                        $type = $row[1];
-                        break;
+
+        if (isset($resultVersion) && $resultVersion->rowCount() > 0) {
+            try {
+                while (false !== ($row = $resultVersion->fetchAssociative())) {
+                    switch ($row['Variable_name']) {
+                        case 'version':
+                            $version = $row['Value'];
+                            break;
+
+                        case 'version_comment':
+                            $type = $row['Value'];
+                            break;
+                    }
                 }
+            } catch (Exception $e) {
             }
         }
         $this->setVersion($version);
         $this->setType($type);
 
         // get modes
-        $resultModes = $db->query('SHOW GLOBAL VARIABLES LIKE "%mode%"');
+        try {
+            $resultModes = $this->connection->executeQuery('SHOW GLOBAL VARIABLES LIKE "%mode%"');
+        } catch (\Doctrine\DBAL\Exception $e) {
+        }
         $sqlModes = [];
-        if ($resultModes->count() > 0) {
-            while ($row = $resultModes->fetchRow()) {
-                switch ($row[0]) {
-                    case 'sql_mode':
-                        $sqlModes = explode(',', $row[1]);
-                        break;
+
+        if (isset($resultModes) && $resultModes->rowCount() > 0) {
+            try {
+                while (false !== ($row = $resultModes->fetchAssociative())) {
+                    switch ($row['Variable_name']) {
+                        case 'sql_mode':
+                            $sqlModes = explode(',', $row['Value']);
+                            break;
+                    }
                 }
+            } catch (Exception $e) {
             }
         }
         $this->setSqlModes($sqlModes);
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getVersion(): string
     {
         return $this->version;
     }
 
-    /**
-     * @param string $version
-     */
     public function setVersion(string $version): void
     {
         $this->version = $version;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
     public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return array
-     */
     public function getSqlModes(): array
     {
         return $this->sqlModes;
     }
 
-    /**
-     * @param array $sqlModes
-     */
     public function setSqlModes(array $sqlModes): void
     {
         $this->sqlModes = $sqlModes;

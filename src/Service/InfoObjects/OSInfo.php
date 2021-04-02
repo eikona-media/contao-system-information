@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of System Information Bundle for Contao Open Source CMS.
  *
@@ -12,40 +14,38 @@ namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
 use Linfo\Exceptions\FatalException;
 use Linfo\Linfo;
+use Linfo\OS\OS;
 
 /**
- * Class OSInfo
- * @package EikonaMedia\Contao\SystemInformation\Service\InfoObjects
+ * Class OSInfo.
  */
 class OSInfo
 {
     /**
-     * @var string $os
+     * @var string
      */
     private $os;
 
     /**
-     * @var string $distroName
+     * @var string
      */
     private $distroName;
 
     /**
-     * @var string $distroVersion
+     * @var string
      */
     private $distroVersion;
 
     /**
-     * @var string $kernel
+     * @var string
      */
     private $kernel;
 
-    /**
-     * OSInfo constructor.
-     */
-    public function __construct()
+    public function init(): self
     {
-        try{
+        try {
             $linfo = new Linfo();
+            /** @var OS $parser */
             $parser = $linfo->getParser();
             $os = $parser->getOS();
             $distro = $parser->getDistro();
@@ -55,73 +55,51 @@ class OSInfo
             $this->setDistroName($distro['name'] ?? '');
             $this->setDistroVersion($distro['version'] ?? '');
             $this->setKernel($kernel);
-        } catch(FatalException $e){
+        } catch (FatalException $e) {
             $this->setOs(PHP_OS_FAMILY);
             $this->setDistroName(PHP_OS);
             $this->setDistroVersion(php_uname('v'));
             $this->setKernel(php_uname('r'));
         }
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getOs(): string
     {
         return $this->os;
     }
 
-    /**
-     * @param string $os
-     */
     public function setOs(string $os): void
     {
         $this->os = $os;
     }
 
-    /**
-     * @return string
-     */
     public function getDistroName(): string
     {
         return $this->distroName;
     }
 
-    /**
-     * @param string $distroName
-     */
     public function setDistroName(string $distroName): void
     {
         $this->distroName = $distroName;
     }
 
-    /**
-     * @return string
-     */
     public function getDistroVersion(): string
     {
         return $this->distroVersion;
     }
 
-    /**
-     * @param string $distroVersion
-     */
     public function setDistroVersion(string $distroVersion): void
     {
         $this->distroVersion = $distroVersion;
     }
 
-    /**
-     * @return string
-     */
     public function getKernel(): string
     {
         return $this->kernel;
     }
 
-    /**
-     * @param string $kernel
-     */
     public function setKernel(string $kernel): void
     {
         $this->kernel = $kernel;

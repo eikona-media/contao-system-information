@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of System Information Bundle for Contao Open Source CMS.
  *
@@ -12,35 +14,33 @@ namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
 use Linfo\Exceptions\FatalException;
 use Linfo\Linfo;
+use Linfo\OS\OS;
 
 /**
- * Class HostInfo
- * @package EikonaMedia\Contao\SystemInformation\Service\InfoObjects
+ * Class HostInfo.
  */
 class HostInfo
 {
     /**
-     * @var string $hostname
+     * @var string
      */
     private $hostname;
 
     /**
-     * @var string $accessedIP
+     * @var string
      */
     private $accessedIP;
 
     /**
-     * @var string $uptime
+     * @var string
      */
     private $uptime;
 
-    /**
-     * HostInfo constructor.
-     */
-    public function __construct()
+    public function init(): self
     {
-        try{
+        try {
             $linfo = new Linfo();
+            /** @var OS $parser */
             $parser = $linfo->getParser();
             $hostname = $parser->getHostName();
             $accessedIP = $parser->getAccessedIP();
@@ -50,8 +50,8 @@ class HostInfo
             $this->setHostname($hostname);
             $this->setAccessedIP($accessedIP);
             $this->setUptime($uptime['text'] ?? '');
-        } catch(FatalException $e){
-            $host= gethostname();
+        } catch (FatalException $e) {
+            $host = gethostname();
             $ip = gethostbyname($host);
 
             // collect host information
@@ -59,51 +59,35 @@ class HostInfo
             $this->setAccessedIP($ip);
             $this->setUptime('-');
         }
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getHostname(): string
     {
         return $this->hostname;
     }
 
-    /**
-     * @param string $hostname
-     */
     public function setHostname(string $hostname): void
     {
         $this->hostname = $hostname;
     }
 
-    /**
-     * @return string
-     */
     public function getAccessedIP(): string
     {
         return $this->accessedIP;
     }
 
-    /**
-     * @param string $accessedIP
-     */
     public function setAccessedIP(string $accessedIP): void
     {
         $this->accessedIP = $accessedIP;
     }
 
-    /**
-     * @return string
-     */
     public function getUptime(): string
     {
         return $this->uptime;
     }
 
-    /**
-     * @param string $uptime
-     */
     public function setUptime(string $uptime): void
     {
         $this->uptime = $uptime;

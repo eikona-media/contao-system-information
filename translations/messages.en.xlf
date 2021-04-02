@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="translations/messages.en.xlf">
+        <body>
+            <trans-unit id="eimed.system_info.title" resname="eimed.system_info.title">
+                <source>System Information</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.legend_load" resname="eimed.system_info.legend_load">
+                <source>Load</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.legend_software" resname="eimed.system_info.legend_software">
+                <source>Software</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.legend_hardware" resname="eimed.system_info.legend_hardware">
+                <source>Hardware</source>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.system_load_info" resname="eimed.system_info.system_load_info">
+                <source>Systemload</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.system_load_1_minute" resname="eimed.system_info.system_load_1_minute">
+                <source>Last Minute</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.system_load_5_minutes" resname="eimed.system_info.system_load_5_minutes">
+                <source>Last 5 Minutes</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.system_load_15_minutes"
+                        resname="eimed.system_info.system_load_15_minutes">
+                <source>Last 15 Minutes</source>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.php_info" resname="eimed.system_info.php_info">
+                <source>PHP</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.php_version" resname="eimed.system_info.php_version">
+                <source>Version</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.php_extensions" resname="eimed.system_info.php_extensions">
+                <source>Loaded Extensions</source>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.database_info" resname="eimed.system_info.database_info">
+                <source>Database</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.database_type" resname="eimed.system_info.database_type">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.database_version" resname="eimed.system_info.database_version">
+                <source>Version</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.database_sql_modes" resname="eimed.system_info.database_sql_modes">
+                <source>Active SQL Modes</source>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.os_info" resname="eimed.system_info.os_info">
+                <source>Operating System</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.os" resname="eimed.system_info.os">
+                <source>OS</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.os_distro" resname="eimed.system_info.os_distro">
+                <source>Distribution</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.os_kernel" resname="eimed.system_info.os_kernel">
+                <source>Kernel</source>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.host_info" resname="eimed.system_info.host_info">
+                <source>Host</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.host_name" resname="eimed.system_info.host_name">
+                <source>Hostname</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.host_accessed_ip" resname="eimed.system_info.host_accessed_ip">
+                <source>IP Address</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.host_uptime" resname="eimed.system_info.host_uptime">
+                <source>Uptime</source>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.hardware_info" resname="eimed.system_info.hardware_info">
+                <source>Hardware</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_server_model" resname="eimed.system_info.hardware_server_model">
+                <source>Servermodel</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_cpu_type" resname="eimed.system_info.hardware_cpu_type">
+                <source>CPU Type</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_cpus" resname="eimed.system_info.hardware_cpus">
+                <source>CPUs</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_architecture" resname="eimed.system_info.hardware_architecture">
+                <source>Architecture</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_ram_total" resname="eimed.system_info.hardware_ram_total">
+                <source>RAM Total</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.hardware_swap_total" resname="eimed.system_info.hardware_swap_total">
+                <source>SWAP Total</source>
+            </trans-unit>
+
+            <trans-unit id="eimed.system_info.virtualization_info" resname="eimed.system_info.virtualization_info">
+                <source>Virtualization</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.virtualization_method" resname="eimed.system_info.virtualization_method">
+                <source>Method</source>
+            </trans-unit>
+            <trans-unit id="eimed.system_info.virtualization_type" resname="eimed.system_info.virtualization_type">
+                <source>Type</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

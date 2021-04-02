@@ -1,13 +1,11 @@
 <?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file datatype="php" original="src/Resources/contao/languages/de/modules.xlf" source-language="en"
-          target-language="de">
+    <file datatype="plaintext" original="contao/languages/modules.xlf" source-language="en" target-language="de">
         <body>
             <trans-unit id="eimed.system_info.title">
                 <source>System Information</source>
                 <target>System Informationen</target>
             </trans-unit>
-
             <trans-unit id="MOD.system_information.0">
                 <source>System Information</source>
                 <target>System Informationen</target>

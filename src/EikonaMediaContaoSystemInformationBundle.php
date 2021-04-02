@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of System Information Bundle for Contao Open Source CMS.
  *
@@ -12,11 +14,10 @@ namespace EikonaMedia\Contao\SystemInformation;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-/**
- * Class EikonaMediaContaoSystemInformationBundle
- * @package EikonaMedia\Contao\SystemInformation
- */
 class EikonaMediaContaoSystemInformationBundle extends Bundle
 {
-    //
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }

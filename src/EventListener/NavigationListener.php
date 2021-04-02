@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of System Information Bundle for Contao Open Source CMS.
  *
@@ -11,58 +13,47 @@
 namespace EikonaMedia\Contao\SystemInformation\EventListener;
 
 use Contao\BackendUser;
-use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class NavigationListener
- * @package EikonaMedia\Contao\SystemInformation\EventListener
+ * @Hook("getUserNavigation")
  */
 class NavigationListener
 {
-    protected $requestStack;
-    protected $router;
-    protected $translator;
-    protected $framework;
+    private $requestStack;
+    private $router;
+    private $translator;
+    private $tokenStorage;
 
-    /**
-     * NavigationListener constructor.
-     *
-     * @param RequestStack $requestStack
-     * @param RouterInterface $router
-     * @param TranslatorInterface $translator
-     * @param ContaoFrameworkInterface $framework
-     */
-    public function __construct(
-        RequestStack $requestStack,
-        RouterInterface $router,
-        TranslatorInterface $translator,
-        ContaoFrameworkInterface $framework
-    )
+    public function __construct(RequestStack $requestStack, RouterInterface $router, TranslatorInterface $translator, TokenStorageInterface $tokenStorage)
     {
         $this->requestStack = $requestStack;
         $this->router = $router;
         $this->translator = $translator;
-        $this->framework = $framework;
+        $this->tokenStorage = $tokenStorage;
     }
 
-    /**
-     * @param array $modules
-     *
-     * @return array
-     */
-    public function onGetUserNavigation(array $modules)
+    public function __invoke(array $modules, bool $showAll): array
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        $this->framework->initialize();
+        if (null === $request) {
+            return $modules;
+        }
 
-        /** @var BackendUser $backendUser */
-        $backendUser = $this->framework->getAdapter(BackendUser::class)->getInstance();
+        $token = $this->tokenStorage->getToken();
 
-        if ($backendUser->hasAccess('system_information', 'modules')) {
+        if (null === $token) {
+            throw new \RuntimeException('No token provided');
+        }
+
+        $user = $token->getUser();
+
+        if (!$user instanceof BackendUser || $user->hasAccess('system_information', 'modules')) {
             $modules['system']['modules']['system_information'] = [
                 'label' => $this->translator->trans('eimed.system_info.title'),
                 'class' => 'navigation system_information',
