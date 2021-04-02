@@ -10,11 +10,33 @@
         "environment"
     ],
     "type": "contao-bundle",
+    "homepage": "https://github.com/eikona-media/contao-system-information",
     "license": "MIT",
     "authors": [
         {
             "name": "eikona-media.de",
-            "homepage": "https://eikona-media.de"
+            "homepage": "https://eikona-media.de",
+            "role": "Developer"
+        },
+        {
+            "name": "Oliver Glaesser",
+            "homepage": "https://github.com/devtty80",
+            "role": "Developer"
+        },
+        {
+            "name": "Ralf Baussenwein",
+            "homepage": "https://github.com/rabauss",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/eikona-media/contao-system-information/issues",
+        "source": "https://github.com/eikona-media/contao-system-information"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/rabauss"
         }
     ],
     "require": {
