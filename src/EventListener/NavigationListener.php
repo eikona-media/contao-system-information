@@ -56,6 +56,7 @@ class NavigationListener
         if (!$user instanceof BackendUser || $user->hasAccess('system_information', 'modules')) {
             $modules['system']['modules']['system_information'] = [
                 'label' => $this->translator->trans('eimed.system_info.title'),
+                'title' => '',
                 'class' => 'navigation system_information',
                 'href' => $this->router->generate('contao_system_information'),
                 'isActive' => 'contao_system_information' === $request->attributes->get('_route'),
