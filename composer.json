@@ -54,7 +54,7 @@
     "symfony/security-bundle": "^4.4 || ^5.2",
     "symfony/translation": "^4.4 || ^5.2",
     "terminal42/service-annotation-bundle": "^1.1",
-    "twig/twig": "^2.7"
+    "twig/twig": "^2.7 || ^3.0"
   },
   "require-dev": {
     "contao/easy-coding-standard": "^3.0"
