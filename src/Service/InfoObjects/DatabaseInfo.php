@@ -13,44 +13,32 @@ declare(strict_types=1);
 namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Driver\Exception;
+use Doctrine\DBAL\Exception;
 
 /**
  * Class DatabaseInfo.
  */
 class DatabaseInfo
 {
-    /**
-     * @var Connection
-     */
-    private $connection;
-
-    /**
-     * @var string
-     */
-    private $version;
-
-    /**
-     * @var string
-     */
-    private $type;
-
-    /**
-     * @var array
-     */
-    private $sqlModes;
+    private Connection $connection;
+    private string $version;
+    private string $type;
+    private array $sqlModes;
 
     public function __construct(Connection $connection)
     {
         $this->connection = $connection;
     }
 
+    /**
+     * @throws Exception
+     */
     public function init(): self
     {
         // get version and type
         try {
             $resultVersion = $this->connection->executeQuery('SHOW GLOBAL VARIABLES LIKE "%version%"');
-        } catch (\Doctrine\DBAL\Exception $e) {
+        } catch (Exception $e) {
         }
         $version = '';
         $type = '';
@@ -68,7 +56,7 @@ class DatabaseInfo
                             break;
                     }
                 }
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
             }
         }
         $this->setVersion($version);
@@ -77,20 +65,18 @@ class DatabaseInfo
         // get modes
         try {
             $resultModes = $this->connection->executeQuery('SHOW GLOBAL VARIABLES LIKE "%mode%"');
-        } catch (\Doctrine\DBAL\Exception $e) {
+        } catch (Exception $e) {
         }
         $sqlModes = [];
 
         if (isset($resultModes) && $resultModes->rowCount() > 0) {
             try {
                 while (false !== ($row = $resultModes->fetchAssociative())) {
-                    switch ($row['Variable_name']) {
-                        case 'sql_mode':
-                            $sqlModes = explode(',', $row['Value']);
-                            break;
+                    if ('sql_mode' === $row['Variable_name']) {
+                        $sqlModes = explode(',', $row['Value']);
                     }
                 }
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
             }
         }
         $this->setSqlModes($sqlModes);

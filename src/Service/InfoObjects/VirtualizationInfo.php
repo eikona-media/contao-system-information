@@ -21,15 +21,8 @@ use Linfo\OS\OS;
  */
 class VirtualizationInfo
 {
-    /**
-     * @var string
-     */
-    private $type;
-
-    /**
-     * @var string
-     */
-    private $method;
+    private string $type;
+    private string $method;
 
     public function init(): self
     {

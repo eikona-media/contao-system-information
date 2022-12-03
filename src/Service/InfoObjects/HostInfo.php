@@ -21,20 +21,9 @@ use Linfo\OS\OS;
  */
 class HostInfo
 {
-    /**
-     * @var string
-     */
-    private $hostname;
-
-    /**
-     * @var string
-     */
-    private $accessedIP;
-
-    /**
-     * @var string
-     */
-    private $uptime;
+    private string $hostname;
+    private string $accessedIP;
+    private string $uptime;
 
     public function init(): self
     {

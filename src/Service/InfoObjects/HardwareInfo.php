@@ -21,30 +21,11 @@ use Linfo\OS\OS;
  */
 class HardwareInfo
 {
-    /**
-     * @var array
-     */
-    private $cpus;
-
-    /**
-     * @var string
-     */
-    private $architecture;
-
-    /**
-     * @var string
-     */
-    private $serverModel;
-
-    /**
-     * @var int
-     */
-    private $ramTotal;
-
-    /**
-     * @var int
-     */
-    private $swapTotal;
+    private array $cpus;
+    private string $architecture;
+    private string $serverModel;
+    private int $ramTotal;
+    private int $swapTotal;
 
     public function init(): self
     {

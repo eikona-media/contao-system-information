@@ -25,34 +25,13 @@ use EikonaMedia\Contao\SystemInformation\Service\InfoObjects\VirtualizationInfo;
  */
 class SystemInformationService
 {
-    /**
-     * @var SystemLoadInfo
-     */
-    private $systemLoadInfo;
-    /**
-     * @var HostInfo
-     */
-    private $hostInfo;
-    /**
-     * @var DatabaseInfo
-     */
-    private $databaseInfo;
-    /**
-     * @var PHPInfo
-     */
-    private $PHPInfo;
-    /**
-     * @var OSInfo
-     */
-    private $OSInfo;
-    /**
-     * @var HardwareInfo
-     */
-    private $hardwareInfo;
-    /**
-     * @var VirtualizationInfo
-     */
-    private $virtualizationInfo;
+    private SystemLoadInfo $systemLoadInfo;
+    private HostInfo $hostInfo;
+    private DatabaseInfo $databaseInfo;
+    private PHPInfo $PHPInfo;
+    private OSInfo $OSInfo;
+    private HardwareInfo $hardwareInfo;
+    private VirtualizationInfo $virtualizationInfo;
 
     public function __construct(SystemLoadInfo $systemLoadInfo, HostInfo $hostInfo, DatabaseInfo $databaseInfo, PHPInfo $PHPInfo, OSInfo $OSInfo, HardwareInfo $hardwareInfo, VirtualizationInfo $virtualizationInfo)
     {

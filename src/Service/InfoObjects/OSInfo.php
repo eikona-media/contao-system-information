@@ -21,25 +21,10 @@ use Linfo\OS\OS;
  */
 class OSInfo
 {
-    /**
-     * @var string
-     */
-    private $os;
-
-    /**
-     * @var string
-     */
-    private $distroName;
-
-    /**
-     * @var string
-     */
-    private $distroVersion;
-
-    /**
-     * @var string
-     */
-    private $kernel;
+    private string $os;
+    private string $distroName;
+    private string $distroVersion;
+    private string $kernel;
 
     public function init(): self
     {

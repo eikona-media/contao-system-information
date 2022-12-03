@@ -30,9 +30,9 @@ use Twig\Environment;
  */
 class BackendController extends AbstractController
 {
-    private $systemInformationService;
-    private $tokenStorage;
-    private $twig;
+    private SystemInformationService $systemInformationService;
+    private TokenStorageInterface $tokenStorage;
+    private Environment $twig;
 
     public function __construct(SystemInformationService $systemInformationService, TokenStorageInterface $tokenStorage, Environment $twig)
     {

@@ -17,15 +17,8 @@ namespace EikonaMedia\Contao\SystemInformation\Service\InfoObjects;
  */
 class PHPInfo
 {
-    /**
-     * @var string
-     */
-    private $version;
-
-    /**
-     * @var array
-     */
-    private $extensions;
+    private string $version;
+    private array $extensions;
 
     public function init(): self
     {
