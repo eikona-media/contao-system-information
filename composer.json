@@ -57,11 +57,17 @@
     "twig/twig": "^2.7 || ^3.0"
   },
   "require-dev": {
-    "contao/easy-coding-standard": "^3.0"
+    "contao/manager-plugin": "^2.0"
   },
   "autoload": {
     "psr-4": {
       "EikonaMedia\\Contao\\SystemInformation\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "contao-components/installer": true,
+      "contao/manager-plugin": true
     }
   },
   "extra": {
@@ -69,7 +75,7 @@
   },
   "scripts": {
     "ecs": [
-      "vendor/bin/ecs check contao/ src/ --fix --ansi"
+      "@php tools/ecs/vendor/bin/ecs check contao/ src/ --fix --ansi"
     ]
   }
 }

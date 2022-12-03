@@ -1,0 +1,19 @@
+name: contao-system-information
+
+services:
+    appserver:
+        type: php:8.1
+        via: cli
+
+tooling:
+    composer:
+        service: appserver
+        cmd: composer
+
+    ecs-init:
+        service: appserver
+        cmd: composer install -d tools/ecs
+
+    ecs:
+        service: appserver
+        cmd: composer ecs
