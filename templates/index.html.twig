@@ -1,10 +1,6 @@
-{% extends "@ContaoCore/Backend/be_page.html.twig" %}
+{% extends "@Contao/be_main" %}
 
-{% block headline %}
-    {{ 'eimed.system_info.title' | trans }}
-{% endblock %}
-
-{% block main %}
+{% block main_content %}
     <div class="maintenance_inactive">
         {{ messages | raw }}
 
@@ -66,5 +62,3 @@
         </fieldset>
     </div>
 {% endblock %}
-
-{% block error %}{% endblock %}

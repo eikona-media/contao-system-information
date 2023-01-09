@@ -13,41 +13,46 @@ declare(strict_types=1);
 namespace EikonaMedia\Contao\SystemInformation\Controller;
 
 use Contao\BackendUser;
+use Contao\CoreBundle\Controller\AbstractBackendController;
 use Contao\CoreBundle\Exception\AccessDeniedException;
 use Contao\Message;
 use Contao\System;
 use EikonaMedia\Contao\SystemInformation\Service\SystemInformationService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Terminal42\ServiceAnnotationBundle\Annotation\ServiceTag;
 use Twig\Environment;
 
 /**
  * @ServiceTag("controller.service_arguments")
  */
-class BackendController extends AbstractController
+class BackendController extends AbstractBackendController
 {
     private SystemInformationService $systemInformationService;
     private TokenStorageInterface $tokenStorage;
     private Environment $twig;
+    private TranslatorInterface $translator;
 
-    public function __construct(SystemInformationService $systemInformationService, TokenStorageInterface $tokenStorage, Environment $twig)
+    public function __construct(SystemInformationService $systemInformationService, TokenStorageInterface $tokenStorage, Environment $twig, TranslatorInterface $translator)
     {
         $this->systemInformationService = $systemInformationService;
         $this->tokenStorage = $tokenStorage;
         $this->twig = $twig;
+        $this->translator = $translator;
     }
 
     /**
-     * @Route("/contao/system_information", name="contao_system_information", defaults={"_scope": "backend"})
+     * @Route("/%contao.backend.route_prefix%/system_information", name="contao_system_information", defaults={"_scope": "backend"})
      */
     public function indexAction(): Response
     {
         $this->checkPermissions();
         $parameters = [
+            'title' => $this->translator->trans('eimed.system_info.title'),
+            'headline' => $this->translator->trans('eimed.system_info.title'),
             'backUrl' => System::getReferer(),
             'messages' => Message::generate(),
             'systemLoadInfo' => $this->systemInformationService->getSystemLoadInfo(),
@@ -59,10 +64,7 @@ class BackendController extends AbstractController
             'virtualizationInfo' => $this->systemInformationService->getVirtualizationInfo(),
         ];
 
-        return new Response($this->twig->render(
-            '@EikonaMediaContaoSystemInformation/index.html.twig',
-            $parameters
-        ));
+        return $this->render('@EikonaMediaContaoSystemInformation/index.html.twig', $parameters);
     }
 
     /**
