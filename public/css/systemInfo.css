@@ -16,6 +16,10 @@
     margin-top: 20px;
 }
 
+html[data-color-scheme="dark"] #system_info_load_graph {
+    background: #292c32;
+}
+
 #system_info_load_graph_inner {
     position: absolute;
     display: flex;
